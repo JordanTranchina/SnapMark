@@ -313,6 +313,22 @@ final class CanvasView: NSView, NSTextFieldDelegate {
         annotations = annotations.map { $0.offset(by: CGPoint(x: -r.integral.minX, y: -r.integral.minY)) }
     }
 
+    /// Debug (SNAPMARK_DEMO): example markup for README screenshots, laid out for
+    /// the 760 × 420 pt demo image.
+    func addDemoMarkup() {
+        annotations += [
+            Annotation(kind: .rectangle(CGRect(x: 206, y: 144, width: 538, height: 50)), color: palette[0], lineWidth: 3),
+            Annotation(kind: .blackout(CGRect(x: 374, y: 208, width: 216, height: 32)), color: .black, lineWidth: 3),
+            Annotation(kind: .arrow(from: CGPoint(x: 640, y: 300), to: CGPoint(x: 660, y: 360)), color: palette[0], lineWidth: 3),
+            Annotation(kind: .step(CGPoint(x: 196, y: 112)), color: palette[3], lineWidth: 3),
+            Annotation(kind: .step(CGPoint(x: 196, y: 168)), color: palette[3], lineWidth: 3),
+            Annotation(kind: .step(CGPoint(x: 196, y: 224)), color: palette[3], lineWidth: 3),
+            Annotation(kind: .text("Use your work email", at: CGPoint(x: 560, y: 118)), color: .black, lineWidth: 3),
+            Annotation(kind: .text("Click to save", at: CGPoint(x: 560, y: 268)), color: .black, lineWidth: 3),
+        ]
+        needsDisplay = true
+    }
+
     /// Turns the image and its markup by 90°. One undo step.
     func rotate(clockwise: Bool) {
         if textField != nil { commitText() }

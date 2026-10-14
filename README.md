@@ -1,6 +1,16 @@
-# SnapMark
+<p align="center"><img src="docs/icon.png" width="128" alt="SnapMark icon"></p>
+
+<h1 align="center">SnapMark</h1>
 
 SnapMark is a small macOS menu bar app. It takes a screenshot with the default macOS keys and opens the screenshot in an editor. In the editor, you can crop and mark up the screenshot with the keyboard and the mouse.
+
+![SnapMark editor with a rectangle, steps, captions, an arrow and a blackout box](docs/editor.png)
+
+## Screenshots
+
+| Command palette (⌘K) | Start window |
+| --- | --- |
+| ![Command palette searching for "ro"](docs/command-palette.png) | ![Start window with recent images](docs/start-window.png) |
 
 Requirement: macOS 13 (Ventura) or later, and the Xcode Command Line Tools (`xcode-select --install`).
 

@@ -58,6 +58,12 @@ final class CommandPalette: NSView, NSSearchFieldDelegate, NSTableViewDataSource
         window?.makeFirstResponder(field)
     }
 
+    /// Fills the search field (debug and tests).
+    func prefill(_ query: String) {
+        field.stringValue = query
+        filter()
+    }
+
     func close() {
         removeFromSuperview()
         onClose?()

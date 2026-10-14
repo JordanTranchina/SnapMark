@@ -46,6 +46,10 @@ final class EditorWindowController: NSWindowController, NSWindowDelegate {
         NSApp.activate(ignoringOtherApps: true)
         window?.makeKeyAndOrderFront(nil)
         window?.makeFirstResponder(canvas)
+        // Debug hooks for README screenshots.
+        let env = ProcessInfo.processInfo.environment
+        if env["SNAPMARK_DEMO"] != nil { canvas.addDemoMarkup() }
+        if let q = env["SNAPMARK_PALETTE"] { showCommandPalette(); commandPalette?.prefill(q) }
     }
 
     // MARK: Setup

@@ -16,6 +16,12 @@ enum RecentImages {
     /// Desktop screenshots.
     static func list(count: Int = 12) -> [URL] {
         let fm = FileManager.default
+        // Debug (SNAPMARK_RECENTS_DIR): show only images from this folder.
+        if let dir = ProcessInfo.processInfo.environment["SNAPMARK_RECENTS_DIR"] {
+            let files = (try? fm.contentsOfDirectory(at: URL(fileURLWithPath: dir), includingPropertiesForKeys: nil)) ?? []
+            return Array(files.filter { $0.pathExtension.lowercased() == "png" }
+                .sorted { $0.lastPathComponent < $1.lastPathComponent }.prefix(count))
+        }
         var urls = (UserDefaults.standard.stringArray(forKey: key) ?? [])
             .filter { fm.fileExists(atPath: $0) }
             .map { URL(fileURLWithPath: $0) }
